@@ -3,10 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="myStudent" class="com.xatu.ba06.Student" autowire="byType">
-        <property name="name" value="李四"/>
-        <property name="age" value="22"/>
-    </bean>
+    <!--
+        School谋爱所有bean声明，School模块的配置文件
+    -->
 
     <bean id="myschool" class="com.xatu.ba06.School">
         <property name="name" value="北京大学"/>
