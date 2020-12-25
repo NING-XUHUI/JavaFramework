@@ -11,8 +11,26 @@
             把包中和自曝中的所有类，找到类中的注解，按照注解的功能创建对象，或给属性赋值
     -->
 
+    <context:component-scan base-package="com.xatu.ba01"/>
+    <!--
+        指定多个包的三种方式
+    -->
+
+    <!--
+        第一种方式：使用多次组建扫描器，指定不同的包
+    -->
+
+    <context:component-scan base-package="com.xatu.ba01"/>
     <context:component-scan base-package="com.xatu.ba02"/>
 
-    <context:property-placeholder location="classpath:test.properties"/>
+    <!--
+        第二种方式，使用分隔符（；或者，）分割多个包名
+    -->
+    <context:component-scan base-package="com.xatu.ba01;com.xatu.ba02"/>
+
+    <!--
+        第三种方式，指定一个父包
+    -->
+    <context:component-scan base-package="com.xatu"/>
 
 </beans>

@@ -12,22 +12,18 @@ import org.springframework.stereotype.Component;
  * @Component(value = "myStudent")
  * 等同于
  * <bean id="myStudent" class="com.xatu.ba01.Student"></bean>
- *使用value属性，指定对象名称
+ * 使用value属性，指定对象名称
  * @Component(value = "myStudent")
  * 省略value
- *
- *@Component("myStudent")
- * 不指定对象名称，由spring提供默认名称:首字母小写的名称
- * @Component
- *
- * spring中和@component功能一致，创建对象的注解还有：
+ * @Component("myStudent") 不指定对象名称，由spring提供默认名称:首字母小写的名称
+ * @Component spring中和@component功能一致，创建对象的注解还有：
  * 1 @Repository(用在持久层类的上面)：放在Dao的实现类上面，
- *          表示创建Dao对象，dao对象就是能访问数据库的
+ * 表示创建Dao对象，dao对象就是能访问数据库的
  * 2 @Service(用在业务层类上)：放在service的实现类上面
- *          创建service对象，service对象是做业务处理，可以有事务等功能的
+ * 创建service对象，service对象是做业务处理，可以有事务等功能的
  * 3 @Controller(用在控制器上面)：放在控制器（处理器）类上面，
- *          创建控制器对象，能够接受用户提交的参数，显示请求的处理结果
- *
+ * 创建控制器对象，能够接受用户提交的参数，显示请求的处理结果
+ * <p>
  * 以上三个注解的使用方法和component对象，都能创建对象，但是这三个注解还有额外功能。
  * 用来给项目分层的
  */
