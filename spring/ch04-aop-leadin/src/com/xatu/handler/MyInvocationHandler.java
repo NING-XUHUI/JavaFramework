@@ -24,13 +24,17 @@ public class MyInvocationHandler implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 通过代理对象执行方法是，会执行这个invoke（）
         System.out.println("执行MyInvocationHandler");
+        String methodName = method.getName();
         Object res = null;
-        ServiceTools.doLog();
-        // 执行目标类的方法，通过Method类实现
-        // SomeServiceImpl.doOther(),doSome()
-        res = method.invoke(target, args);
-
-        ServiceTools.doTrans();
+        if ("doSome".equals(methodName)) {
+            ServiceTools.doLog();
+            // 执行目标类的方法，通过Method类实现
+            // SomeServiceImpl.doOther(),doSome()
+            res = method.invoke(target, args);
+            ServiceTools.doTrans();
+        } else {
+            res = method.invoke(target, args);
+        }
         return res;
     }
 }

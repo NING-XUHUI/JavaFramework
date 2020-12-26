@@ -21,7 +21,8 @@ public class MyApp {
         InvocationHandler handler = new MyInvocationHandler(target);
 
         // 使用Proxy创建代理
-        SomeService proxy = (SomeService) Proxy.newProxyInstance(target.getClass().getClassLoader(),
+        SomeService proxy = (SomeService) Proxy.newProxyInstance(
+                target.getClass().getClassLoader(),
                 target.getClass().getInterfaces(), handler);
 
         // 通过代理执行方法，会调用handler中的invoke（）
