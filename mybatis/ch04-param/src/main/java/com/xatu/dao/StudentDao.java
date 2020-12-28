@@ -9,15 +9,9 @@ import java.util.List;
  */
 public interface StudentDao {
     /**
-     * 查询学生
-     * @return 学生集合
+     * 通过id找学生
+     * @param id 学生的id
+     * @return 符合id的学生
      */
-    List<Student> selectStudents();
-
-    /**
-     * 插入一个学生信息
-     * @param student 学生对象
-     * @return 表中共产生多少行的变化
-     */
-    int insertStudent(Student student);
+    public Student selectStudentById(Integer id);
 }

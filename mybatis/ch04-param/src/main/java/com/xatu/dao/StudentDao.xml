@@ -3,11 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xatu.dao.StudentDao">
-    <select id="selectStudents" resultType="com.xatu.domain.Student">
-        select id, name, email, age from student order by id
+<!--
+    parameterType : dao接口中方法参数的数据类型
+    parameterType它的值是java的数据类型全限定名称或者是mybatis定义的别名
+    例如:parameterType="java.lang.Interger"
+        parameterType="int"
+-->
+    <select id="selectStudentById" parameterType="int" resultType="com.xatu.domain.Student">
+        select id, name, email, age from student where id=#{id}
     </select>
-
-    <insert id="insertStudent">
-        insert into student values(#{id}, #{name}, #{email}, #{age})
-    </insert>
 </mapper>
