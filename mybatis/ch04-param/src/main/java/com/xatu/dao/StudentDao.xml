@@ -58,4 +58,16 @@
         where name=#{paramAge}
         or age=#{paramAge}
     </select>
+    <!--    多个参数使用位置    -->
+    <select id="selectMultiPositions" resultType="com.xatu.domain.Student">
+        select id, name, email, age from student
+        where name=#{arg0}
+        or age=#{arg1}
+    </select>
+    <!--    多个参数使用map ,使用的语法是#{map的key}  -->
+    <select id="selectMultiMap" resultType="com.xatu.domain.Student">
+        select id, name, email, age from student
+        where name=#{myname}
+        or age=#{myage}
+    </select>
 </mapper>

@@ -5,6 +5,7 @@ import com.xatu.vo.QueryParam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ningxuhui
@@ -41,4 +42,15 @@ public interface StudentDao {
      * 多个参数：使用java对象作为接口中方法的参数
      */
     List<Student> selectMultiObjects(QueryParam param);
+
+    /**
+     * 多个参数，简单类型，按位置传值
+     *
+     */
+    List<Student> selectMultiPositions(String name, Integer age);
+
+    /**
+     * 多个参数，使用map存放多个值
+     */
+    List<Student> selectMultiMap(Map<String, Object> map);
 }
