@@ -3,16 +3,56 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xatu.dao.StudentDao">
-<!--
-    parameterType : dao接口中方法参数的数据类型
-    parameterType它的值是java的数据类型全限定名称或者是mybatis定义的别名
-    例如:parameterType="java.lang.Interger"
-        parameterType="int"
+    <!--
+        parameterType : dao接口中方法参数的数据类型
+        parameterType它的值是java的数据类型全限定名称或者是mybatis定义的别名
+        例如:parameterType="java.lang.Interger"
+            parameterType="int"
 
-    注意：parameterType不是强制的，mybatis通过反射机制能够发现接口参数的数据类型
-    所以可以没有，一般也不写。
--->
+        注意：parameterType不是强制的，mybatis通过反射机制能够发现接口参数的数据类型
+        所以可以没有，一般也不写。
+
+        使用#{}之后，mybatis执行sql时使用的jdbc中的PreparedStatement对象
+        由mybatis执行下面的代码：
+        1.mybatis创建connection，PreparedStatement对象
+            String sql = "select id, name, age ,email, age form student where id = ?";
+            PreparedStatement pst = conn.preparedStatement(sql);
+            pst.setInt(1, 1001);
+
+        2.执行sql封装为resultType="com.xatu.domain.Student"这个对象
+            Result rs = ps.executeQuery();
+            Student student = null;
+            while(rs.next()) {
+                //从数据库中取表的一行数据，存到一个java对象属性中
+                student = new Student();
+                student.setId(rs.getInt("id"));
+                student.setName(rs.getString("name"));
+                student.setEmail(rs.getEmail("email"));
+                student.setAge(rs.getInt("age"));
+            }
+    -->
     <select id="selectStudentById" parameterType="int" resultType="com.xatu.domain.Student">
-        select id, name, email, age from student where id=#{id}
+
+
+
+                                select id, name, email, age from student where id=#{id}
+
+
+
+    </select>
+
+    <!--  多个参数   -->
+    <select id="selectMultiParams" resultType="com.xatu.domain.Student">
+
+
+                        select id, name, email, age
+                        from student
+                        where name=#{myname} or age=#{myage}
+
+
+    </select>
+    <!--    查询所有的学生     -->
+    <select id="selectAllStudents" resultType="com.xatu.domain.Student">
+        select id, name, email, age from student
     </select>
 </mapper>

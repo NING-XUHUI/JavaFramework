@@ -17,5 +17,31 @@ public class TestMyBatis {
 
         Student student = dao.selectStudentById(1005);
         System.out.println(student);
+        sqlSession.close();
+    }
+    @Test
+    public void testSelectAllStudents() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> students = dao.selectAllStudents();
+        for (Student student : students) {
+            System.out.println(student);
+        }
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void testSelectMultiParams() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> students = dao.selectMultiParams("李四", 40);
+
+        for (Student student : students) {
+            System.out.println(student);
+        }
+        sqlSession.close();
     }
 }

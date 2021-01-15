@@ -10,4 +10,5 @@
     <insert id="insertStudent">
         insert into student values(#{id}, #{name}, #{email}, #{age})
     </insert>
+
 </mapper>
