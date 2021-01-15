@@ -8,6 +8,9 @@
     parameterType它的值是java的数据类型全限定名称或者是mybatis定义的别名
     例如:parameterType="java.lang.Interger"
         parameterType="int"
+
+    注意：parameterType不是强制的，mybatis通过反射机制能够发现接口参数的数据类型
+    所以可以没有，一般也不写。
 -->
     <select id="selectStudentById" parameterType="int" resultType="com.xatu.domain.Student">
         select id, name, email, age from student where id=#{id}
