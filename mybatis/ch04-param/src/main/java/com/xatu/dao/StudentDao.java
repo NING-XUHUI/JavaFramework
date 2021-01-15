@@ -1,6 +1,7 @@
 package com.xatu.dao;
 
 import com.xatu.domain.Student;
+import com.xatu.vo.QueryParam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -35,4 +36,9 @@ public interface StudentDao {
      * @return 所有的学生
      */
     List<Student> selectAllStudents();
+
+    /**
+     * 多个参数：使用java对象作为接口中方法的参数
+     */
+    List<Student> selectMultiObjects(QueryParam param);
 }
