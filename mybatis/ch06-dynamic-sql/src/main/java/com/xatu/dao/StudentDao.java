@@ -14,4 +14,11 @@ import java.util.Map;
  */
 public interface StudentDao {
     List<Student> selectStudentIf(Student student);
+
+    List<Student> selectStudentWhere(Student student);
+
+    List<Student> selectStudentForeach(List<Integer> idList);
+
+    List<Student> selectStudentForeachTwo(List<Student> stuList);
+
 }
