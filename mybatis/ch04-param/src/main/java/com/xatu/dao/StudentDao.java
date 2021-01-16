@@ -34,6 +34,7 @@ public interface StudentDao {
 
     /**
      * 查询所有学生
+     *
      * @return 所有的学生
      */
     List<Student> selectAllStudents();
@@ -45,7 +46,6 @@ public interface StudentDao {
 
     /**
      * 多个参数，简单类型，按位置传值
-     *
      */
     List<Student> selectMultiPositions(String name, Integer age);
 
@@ -53,4 +53,5 @@ public interface StudentDao {
      * 多个参数，使用map存放多个值
      */
     List<Student> selectMultiMap(Map<String, Object> map);
+
 }
