@@ -1,12 +1,12 @@
-package com.xatu.ba03;
+package com.xatu.ba04;
 
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
 import java.util.Date;
+import java.util.concurrent.Exchanger;
 
 /**
  * @author ningxuhui
@@ -58,55 +58,28 @@ import java.util.Date;
 
 @Aspect
 public class MyAspect {
-    /***
-     * 环绕通知定义格式
+    /**
+     * 异常通知方法的定义格式
      * 1 public
-     * 2 必须有一个返回值，推荐使用Object
+     * 2 没有返回值
      * 3 方法名称自定义
-     * 4 方法有参数，固定的参数ProceedingJoinPoint
+     * 4 方法又一个Exception，如果还有就是JoinPoint
      */
     /**
-     * @ Around 环绕通知
-     *      属性：value 切入点表达式
-     *      位置：在方法的定义上面
-     * 特点：
-     *      1 他是功能最强的通知
-     *      2 在目标方法的谦和后都能增强功能
-     *      3 控制目标方法是否被执行
-     *      4 修改原来的目标方法的执行结果。影响最后的调用结果
-     *
-     *      环绕通知，等同于jdk动态代理，InvocationHandler接口
-     *
-     *
-     * @param pjp ProceedingJoinPoint 等同于Method
-     *             作用：执行目标方法的
-     * @return Object 目标方法的执行结果，可以被就该
+     * @AfterThrowing: 异常通知方法的定义格式
+     *      属性：1 value 切入点表达式
+     *           2 throwing 自定义的变量，表示目标方法抛出的异常对象。变量名必须喝方法的参数名称一样
+     *      特点：
+     *      1 在目标方法抛出异常时执行的
+     *      2 如果做异常的监控程序，监控木笔哦啊哦方法执行时是不是有异常
+     *          如果有异常，可以发送邮件，短信通知
+     * @param ex exception
      */
-    @Around(value = "execution(public String com.xatu.ba03.SomeServiceImpl.doFirst(..))")
-    public Object myAround(ProceedingJoinPoint pjp) throws Throwable {
-        String name = "";
-        // 获取第一个参数的值
-        Object[] args = pjp.getArgs();
-        if (args != null && args.length > 1) {
-            Object arg = args[0];
-            name = (String) arg;
-        }
-        // 实现环绕通知
-        Object result = null;
-        System.out.println("环绕通知：在目标方法之前，输出时间：" + new Date());
-        // 1.目标方法调用
-        if ("zhangsan".equals(name)) {
-            // 符合条件，调用目标方法
-            result = pjp.proceed();
-        }
-        // 2.在目标方法的前或者后加入功能
-        System.out.println("环绕通知：在目标方法之后，提交事务");
-
-        // 修改目标方法的执行结果，影响方法的调用结果
-        if (result != null) {
-            result = "Hello AspectJ AOP";
-        }
-        // 返回目标方法的实质性结果
-        return result;
+    @AfterThrowing(value = "execution(* *..SomeServiceImpl.doSecond(..))",
+                throwing = "ex")
+    public void myAfterThrowing(Exception ex) {
+        System.out.println("异常通知：方法发生异常时，执行：" + ex.getMessage());
+        // 发送邮件、短信等
     }
+
 }
