@@ -4,14 +4,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--    把对象交给spring容器，由spring统一创建、管理    -->
     <!--    声明目标对象      -->
-    <bean id="someService" class="com.xatu.ba06.SomeServiceImpl"/>
+    <bean id="someService" class="com.xatu.ba08.SomeServiceImpl"/>
     <!--    声明切面对象      -->
-    <bean id="myAspect" class="com.xatu.ba06.MyAspect"/>
+    <bean id="myAspect" class="com.xatu.ba08.MyAspect"/>
     <!--    声明自动代理生成器:使用aspectj框架内部的功能，创建目标对象的代理对象。
             创建代理对象是在内存中实现的，修改目标对象的内存结构。创建为代理对象
             所以目标对象就是被修改后的代理对象
 
             aspectj-autoproxy会把spring容器中所有的目标对象，一次性都生成代理对象
     -->
-    <aop:aspectj-autoproxy/>
+    <!--    <aop:aspectj-autoproxy/>-->
+    <!--
+        如果期望目标类有接口，shioyngcglib代理
+    -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>
