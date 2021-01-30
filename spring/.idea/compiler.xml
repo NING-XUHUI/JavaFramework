@@ -8,9 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ch05-aop-aspectj" />
         <module name="ch06-spring-mybatis" />
-        <module name="ch03-di-anno" />
+        <module name="ch07-spring-trans" />
+        <module name="ch09-spring-trans-aspectj" />
         <module name="ch02-di-xml" />
         <module name="ch01-hello-spring" />
+        <module name="ch03-di-anno" />
+        <module name="ch08-spring-trans-anno" />
+        <module name="ch10-spring-trans-aspectj" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +24,10 @@
       <module name="ch03-proxy-dao" target="1.8" />
       <module name="ch05-aop-aspectj" target="1.8" />
       <module name="ch06-spring-mybatis" target="1.8" />
+      <module name="ch07-spring-trans" target="1.8" />
+      <module name="ch08-spring-trans-anno" target="1.8" />
+      <module name="ch09-spring-trans-aspectj" target="1.8" />
+      <module name="ch10-spring-trans-aspectj" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
